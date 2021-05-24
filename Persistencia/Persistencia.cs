@@ -1,5 +1,5 @@
 ﻿using System;
-using Logica;
+using Modelo;
 
 namespace Persistence
 {

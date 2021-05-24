@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Logica
+namespace Modelo
 {
 	public class Direccion
 	{

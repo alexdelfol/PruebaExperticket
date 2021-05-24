@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using Logica;
+using Modelo;
 using System.IO;
 
 namespace Persistence
