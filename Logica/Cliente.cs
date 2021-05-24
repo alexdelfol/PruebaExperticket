@@ -9,14 +9,14 @@ namespace Logica
 		private Sexo sexo;
 		private DateTime nacimiento;
 		private Direccion direccion;
-		private string dni;
+		private readonly string dni;
 
 		public string Nombre { get => nombre; set => nombre = value; }
 		public string Apellidos { get => apellidos; set => apellidos = value; }
 		public Sexo Sexo { get => sexo; set => sexo = value; }
 		public DateTime Nacimiento { get => nacimiento; set => nacimiento = value; }
 		public Direccion Direccion { get => direccion; set => direccion = value; }
-		public string DNI { get => dni; set => dni = value; }
+		public string DNI { get => dni; }
 
 		public Cliente(string pNombre, string pApellidos, Sexo pSexo, DateTime pNacimiento, Direccion pDireccion, string pDNI)
 		{
