@@ -3,7 +3,7 @@ using System.Collections;
 using Logica;
 using System.IO;
 
-namespace Persistencia
+namespace Persistence
 {
 
 	public class PersistenciaTemporal : Persistencia

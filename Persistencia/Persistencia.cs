@@ -1,7 +1,7 @@
 ﻿using System;
 using Logica;
 
-namespace Persistencia
+namespace Persistence
 {
 	public interface Persistencia
 	{
