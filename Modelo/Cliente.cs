@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace Modelo
 {
 
@@ -9,6 +11,7 @@ namespace Modelo
 		private Sexo sexo;
 		private DateTime nacimiento;
 		private Direccion direccion;
+		[Key]
 		private readonly string dni;
 
 		public string Nombre { get => nombre; set => nombre = value; }

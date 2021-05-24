@@ -6,7 +6,7 @@ using System.IO;
 namespace Persistence
 {
 
-	public class PersistenciaVolatil : Persistencia
+	public class PersistenciaVolatil : IPersistencia
 	{
 
 		private Hashtable clientes;
