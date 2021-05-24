@@ -6,7 +6,7 @@ using System.IO;
 namespace Persistencia
 {
 
-	public class PersistenciaTemporal
+	public class PersistenciaTemporal : Persistencia
 	{
 
 		private Hashtable clientes;
