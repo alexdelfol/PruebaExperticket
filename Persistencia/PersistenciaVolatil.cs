@@ -6,12 +6,12 @@ using System.IO;
 namespace Persistence
 {
 
-	public class PersistenciaTemporal : Persistencia
+	public class PersistenciaVolatil : Persistencia
 	{
 
 		private Hashtable clientes;
 
-		public PersistenciaTemporal()
+		public PersistenciaVolatil()
 		{
 			clientes = new Hashtable();
 		}
