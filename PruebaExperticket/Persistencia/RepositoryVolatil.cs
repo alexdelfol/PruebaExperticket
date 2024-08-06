@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using PruebaExperticket.Domain;
 
 namespace PruebaExperticket.Persistencia
@@ -44,30 +46,25 @@ namespace PruebaExperticket.Persistencia
             }
         }
 
-		public Cliente BuscarPorDNI(string DNI)
+		public Cliente BuscarPorDni(string? dni)
         {
-			if (clientes.ContainsKey(DNI))
+			if (dni is not null && clientes.ContainsKey(dni))
 			{
-				return (Cliente)clientes[DNI];
+				return (Cliente)clientes[dni];
 			}
 			TextWriter errorWriter = Console.Error;
 			errorWriter.WriteLine("No existe ese cliente");
 			return null;
         }
 
-		public Cliente BuscarPorNombreApellidosYNacimiento(string nombre, string apellidos, DateTime nacimiento)
-        {
-			foreach(DictionaryEntry cliente in clientes)
-            {
-				Cliente result = (Cliente) cliente.Value;
-				if (nombre == result.Nombre && apellidos == result.Apellidos && nacimiento.Equals(result.Nacimiento))
-                {
-					return result;
-                }
-            }
-			TextWriter errorWriter = Console.Error;
-			errorWriter.WriteLine("No existe ese cliente");
-			return null;
+		public IEnumerable<Cliente> BuscarPorNombreApellidosONacimiento(string? nombre, string? apellidos, DateTime? nacimiento)
+		{
+			var clientesResult = ((IEnumerable<Cliente>)clientes.Values).Where(cliente =>
+				(nombre is not null && cliente.Nombre == nombre)
+				|| (apellidos is not null && cliente.Apellidos == apellidos)
+				|| (nacimiento is not null && cliente.Nacimiento == nacimiento)
+				);
+			return clientesResult;
 		}
 
 		public bool ModificarCliente(Cliente cliente)
@@ -85,11 +82,9 @@ namespace PruebaExperticket.Persistencia
             }
         }
 
-		public Cliente[] ObtenerArrayClientes()
-        {
-			Cliente[] arrrayResult = new Cliente[clientes.Count];
-			clientes.CopyTo(arrrayResult, 0);
-			return arrrayResult;
-        }
+		public IEnumerable<Cliente> ObtenerClientes()
+		{
+			return (IEnumerable<Cliente>)clientes.Values;
+		}
 	}
 }

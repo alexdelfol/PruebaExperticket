@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.IO;
+using System.Linq;
 using PruebaExperticket.Domain;
 
 namespace PruebaExperticket.Persistencia
@@ -29,7 +31,7 @@ namespace PruebaExperticket.Persistencia
             }
         }
 
-        public Cliente BuscarPorDNI(string dni)
+        public Cliente BuscarPorDni(string? dni)
         {
             Cliente result = Clientes.Find(dni);
             if (result == null) {
@@ -40,18 +42,13 @@ namespace PruebaExperticket.Persistencia
 
         }
 
-        public Cliente BuscarPorNombreApellidosYNacimiento(string nombre, string apellidos, DateTime nacimiento)
+        public IEnumerable<Cliente> BuscarPorNombreApellidosONacimiento(string? nombre, string? apellidos, DateTime? nacimiento)
         {
-            foreach (Cliente cliente in Clientes.ToListAsync().Result)
-            {
-                if (nombre == cliente.Nombre && apellidos == cliente.Apellidos && nacimiento.Equals(cliente.Nacimiento))
-                {
-                    return cliente;
-                }
-            }
-            TextWriter errorWriter = Console.Error;
-            errorWriter.WriteLine("No existe ese cliente");
-            return null;
+            return Clientes.Where(cliente =>
+                (nombre != null && cliente.Nombre == nombre)
+                || (apellidos != null && cliente.Apellidos == apellidos)
+                || (nacimiento != null && cliente.Nacimiento == nacimiento)
+            );
         }
 
         public bool EliminarCliente(Cliente cliente)
@@ -74,9 +71,9 @@ namespace PruebaExperticket.Persistencia
             throw new NotImplementedException();
         }
 
-        public Cliente[] ObtenerArrayClientes()
+        public IEnumerable<Cliente> ObtenerClientes()
         {
-            throw new NotImplementedException();
+            return Clientes;
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

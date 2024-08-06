@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using PruebaExperticket.Domain;
 
 namespace PruebaExperticket.Persistencia
@@ -8,8 +9,8 @@ namespace PruebaExperticket.Persistencia
 		public bool AnyadirCliente(Cliente cliente);
 		public bool EliminarCliente(Cliente cliente);
 		public bool ModificarCliente(Cliente cliente);
-		public Cliente BuscarPorDNI(string dni);
-		public Cliente BuscarPorNombreApellidosYNacimiento(string nombre, string apellidos, DateTime nacimiento);
-		public Cliente[] ObtenerArrayClientes();
+		public Cliente BuscarPorDni(string? dni);
+		public IEnumerable<Cliente> BuscarPorNombreApellidosONacimiento(string? nombre, string? apellidos, DateTime? nacimiento);
+		public IEnumerable<Cliente> ObtenerClientes();
 	}
 }
