@@ -17,8 +17,9 @@ public class ClienteController : BaseController
         _repository = repository;
     }
 
-    [HttpGet(Name = "GetByNationalDocumentIdentifier")]
-    public ClienteResponse GetBasic(ClienteBasicGetRequest request)
+    [HttpGet]
+    [Route("GetByNationalDocumentIdentifier")]
+    public ClienteResponse GetBasic([FromQuery]ClienteBasicGetRequest request)
     {
         return HandleRequest(() => new ClienteResponse
         {
@@ -29,7 +30,7 @@ public class ClienteController : BaseController
     }
 
     [HttpGet]
-    public ClienteResponse Get(ClienteGetRequest request)
+    public ClienteResponse Get([FromQuery]ClienteGetRequest request)
     {
         IEnumerable<Cliente> clientes;
         if (request.Nombre is null && request.Apellido is null && request.FechaNacimiento is null)

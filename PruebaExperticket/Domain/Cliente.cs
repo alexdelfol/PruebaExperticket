@@ -6,35 +6,32 @@ namespace PruebaExperticket.Domain
 
 	public class Cliente
 	{
-		private string nombre;
-		private string apellidos;
-		private Sexo sexo;
-		private DateTime nacimiento;
-		private Direccion direccion;
+		public string Nombre { get; set; }
+		public string Apellidos { get; set; }
+		public Sexo Sexo { get; set; }
+		public DateTime Nacimiento { get; set; }
+		public Direccion Direccion { get; set; }
+
 		[Key]
-		private readonly string dni;
+		public string DNI { get; set; }
 
-		public string Nombre { get => nombre; set => nombre = value; }
-		public string Apellidos { get => apellidos; set => apellidos = value; }
-		public Sexo Sexo { get => sexo; set => sexo = value; }
-		public DateTime Nacimiento { get => nacimiento; set => nacimiento = value; }
-		public Direccion Direccion { get => direccion; set => direccion = value; }
-		public string DNI { get => dni; }
+		public Cliente() { }
 
-		public Cliente(string pNombre, string pApellidos, Sexo pSexo, DateTime pNacimiento, Direccion pDireccion, string pDNI)
+		public Cliente(string nombre, string apellidos, Sexo sexo, DateTime nacimiento, Direccion direccion, string dni)
 		{
-			nombre = pNombre;
-			apellidos = pApellidos;
-			sexo = pSexo;
-			nacimiento = pNacimiento;
-			direccion = pDireccion;
-			dni = pDNI;
+			Nombre = nombre;
+			Apellidos = apellidos;
+			Sexo = sexo;
+			Nacimiento = nacimiento;
+			Direccion = direccion;
+			DNI = dni;
 		}
+
 
 		override
         public string ToString()
         {
-			return nombre + " " + apellidos + "con DNI " + dni + ", " + sexo.ToString() + " nacido el " + nacimiento.ToShortDateString() + "con dirección en: " + direccion + ".";
+			return Nombre + " " + Apellidos + "con DNI " + DNI + ", " + Sexo.ToString() + " nacido el " + Nacimiento.ToShortDateString() + "con dirección en: " + Direccion + ".";
         }
     }
 }
