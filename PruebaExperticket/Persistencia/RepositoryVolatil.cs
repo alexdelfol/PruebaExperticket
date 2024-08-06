@@ -32,11 +32,11 @@ namespace PruebaExperticket.Persistencia
             }
         }
 
-		public bool EliminarCliente(Cliente cliente)
+		public bool EliminarCliente(string dni)
         {
 			try
 			{
-				clientes.Remove(cliente.DNI);
+				clientes.Remove(dni);
 				return true;
 			} catch (Exception e)
             {
@@ -67,11 +67,11 @@ namespace PruebaExperticket.Persistencia
 			return clientesResult;
 		}
 
-		public bool ModificarCliente(Cliente cliente)
+		public bool ModificarCliente(string dni, Cliente cliente)
         {
             try
             {
-				clientes[cliente.DNI] = cliente;
+				clientes[dni] = cliente;
 				return true;
             }
             catch (Exception e)

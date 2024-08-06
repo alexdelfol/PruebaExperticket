@@ -28,7 +28,7 @@ public class ClienteController : BaseController
         });
     }
 
-    [HttpGet(Name = "Get")]
+    [HttpGet]
     public ClienteResponse Get(ClienteGetRequest request)
     {
         IEnumerable<Cliente> clientes;
@@ -45,6 +45,36 @@ public class ClienteController : BaseController
         {
             Clientes = clientes,
             Result = true,
+            TimeStamp = DateTime.Now
+        });
+    }
+
+    [HttpPost]
+    public BaseResponse Insert(Cliente cliente)
+    {
+        return HandleRequest(() => new BaseResponse
+        {
+            Result = _repository.AnyadirCliente(cliente),
+            TimeStamp = DateTime.Now
+        });
+    }
+    
+    [HttpPut]
+    public BaseResponse Update([FromQuery]string dni, [FromBody]Cliente cliente)
+    {
+        return HandleRequest(() => new BaseResponse
+        {
+            Result = _repository.ModificarCliente(dni, cliente),
+            TimeStamp = DateTime.Now
+        });
+    }
+    
+    [HttpDelete]
+    public BaseResponse Delete(string dni)
+    {
+        return HandleRequest(() => new BaseResponse
+        {
+            Result = _repository.EliminarCliente(dni),
             TimeStamp = DateTime.Now
         });
     }

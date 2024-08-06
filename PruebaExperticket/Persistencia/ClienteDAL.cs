@@ -51,22 +51,17 @@ namespace PruebaExperticket.Persistencia
             );
         }
 
-        public bool EliminarCliente(Cliente cliente)
+        public bool EliminarCliente(string dni)
         {
-            try
-            {
-                Clientes.Remove(cliente);
-                return true;
-            }
-            catch (Exception e)
-            {
-                TextWriter errorWriter = Console.Error;
-                errorWriter.WriteLine(e.Message);
-                return false;
-            }
+            var clienteABorrar = Clientes.FirstOrDefault(cliente => cliente.DNI == dni);
+            if (clienteABorrar is null) throw new KeyNotFoundException("No existe cliente con DNI: " + dni);
+            Console.WriteLine(clienteABorrar.ToString());
+
+            Clientes.Remove(clienteABorrar);
+            return true;
         }
 
-        public bool ModificarCliente(Cliente cliente)
+        public bool ModificarCliente(string dni, Cliente cliente)
         {
             throw new NotImplementedException();
         }
