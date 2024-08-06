@@ -9,4 +9,16 @@
     <PackageReference Include="EntityFramework" Version="6.4.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Api\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Api\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Api\**" />
+  </ItemGroup>
+
 </Project>
