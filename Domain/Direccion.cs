@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Modelo
+﻿namespace PruebaExperticket.Domain
 {
 	public class Direccion
 	{

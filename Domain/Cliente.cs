@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Modelo
+namespace PruebaExperticket.Domain
 {
 
 	public class Cliente

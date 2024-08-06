@@ -1,13 +1,12 @@
 ﻿using System;
-using Modelo;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.IO;
-using System.Collections;
+using PruebaExperticket.Domain;
 
-namespace Persistence
+namespace PruebaExperticket.Persistencia
 {
-	public class ClienteDAL:DbContext,IPersistencia
+	public class ClienteDAL:DbContext,IRepository
 	{
 		public ClienteDAL(): base("ContextoCliente")
 		{
@@ -30,9 +29,9 @@ namespace Persistence
             }
         }
 
-        public Cliente BuscarPorDNI(string DNI)
+        public Cliente BuscarPorDNI(string dni)
         {
-            Cliente result = Clientes.Find(DNI);
+            Cliente result = Clientes.Find(dni);
             if (result == null) {
                 TextWriter errorWriter = Console.Error;
                 errorWriter.WriteLine("No existe ese cliente");

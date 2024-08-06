@@ -1,14 +1,14 @@
 ﻿using System;
-using Modelo;
+using PruebaExperticket.Domain;
 
-namespace Persistence
+namespace PruebaExperticket.Persistencia
 {
-	public interface IPersistencia
+	public interface IRepository
 	{
 		public bool AnyadirCliente(Cliente cliente);
 		public bool EliminarCliente(Cliente cliente);
 		public bool ModificarCliente(Cliente cliente);
-		public Cliente BuscarPorDNI(string DNI);
+		public Cliente BuscarPorDNI(string dni);
 		public Cliente BuscarPorNombreApellidosYNacimiento(string nombre, string apellidos, DateTime nacimiento);
 		public Cliente[] ObtenerArrayClientes();
 	}

@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections;
-using Modelo;
 using System.IO;
+using PruebaExperticket.Domain;
 
-namespace Persistence
+namespace PruebaExperticket.Persistencia
 {
 
-	public class PersistenciaVolatil : IPersistencia
+	public class RepositoryVolatil : IRepository
 	{
 
 		private Hashtable clientes;
 
-		public PersistenciaVolatil()
+		public RepositoryVolatil()
 		{
 			clientes = new Hashtable();
 		}

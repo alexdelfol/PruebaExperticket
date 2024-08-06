@@ -1,6 +1,5 @@
 ﻿using System;
-using Persistence;
-using Modelo;
+using PruebaExperticket.Persistencia;
 
 namespace PruebaExperticket
 {
@@ -17,7 +16,7 @@ namespace PruebaExperticket
         private const string PREGUNTA_MODIFICACION ="";
         static void Main(string[] args)
         {
-            IPersistencia miPersistencia = new ClienteDAL();
+            IRepository miRepository = new ClienteDAL();
 
             Console.WriteLine(MENSAJE_BIENVENIDA);
             Console.WriteLine(PREGUNTA_PRINCIPAL);
